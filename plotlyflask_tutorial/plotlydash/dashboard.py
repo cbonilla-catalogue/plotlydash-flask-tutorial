@@ -32,9 +32,9 @@ def init_dashboard(server):
             id='histogram-graph',
             figure={
                 'data': [{
-                    'x': df['complaint_type'],
-                    'text': df['complaint_type'],
-                    'customdata': df['key'],
+                    'x': df['Asset Class'],
+                    'text': df['Asset Class'],
+                    'customdata': df['Net Expense Ratio'],
                     'name': '311 Calls by region.',
                     'type': 'histogram'
                 }],
@@ -59,7 +59,10 @@ def create_data_table(df):
         data=df.to_dict('records'),
         sort_action="native",
         sort_mode='native',
-        page_size=300
+        page_size=19,
+        filter_action='native',
+        fixed_columns={'headers': True, 'data': 1},
+        style_table={'overflowX': 'auto'}
     )
     return table
 
